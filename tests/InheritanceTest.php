@@ -71,7 +71,7 @@ class InheritanceTest extends AbstractTestCase
     {
         $event = self::$eventRepository->load($eventId);
 
-        $this->assertSame(Event\CountryEvent\CreateCountryEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\CreateCountryEvent::class, $event);
 
         /** @var Event\CountryEvent\CreateCountryEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -96,7 +96,7 @@ class InheritanceTest extends AbstractTestCase
     {
         $event = self::$gateway->load($class, ['id' => $eventId]);
 
-        $this->assertSame(Event\CountryEvent\CreateCountryEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\CreateCountryEvent::class, $event);
 
         /** @var Event\CountryEvent\CreateCountryEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -166,7 +166,7 @@ class InheritanceTest extends AbstractTestCase
         $this->assertDebugStatementCount(1);
         $this->assertDebugStatement(0, 'SELECT a.type, a.id, a.time FROM Event AS a WHERE a.id = ?', $eventId);
 
-        $this->assertSame(Event\CountryEvent\CreateCountryEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\CreateCountryEvent::class, $event);
 
         /** @var Event\CountryEvent\CreateCountryEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -211,7 +211,7 @@ class InheritanceTest extends AbstractTestCase
         $this->assertDebugStatementCount(1);
         $this->assertDebugStatement(0, 'SELECT a.type, a.id, a.time, a.country_code FROM Event AS a WHERE a.id = ?', $eventId);
 
-        $this->assertSame(Event\CountryEvent\CreateCountryEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\CreateCountryEvent::class, $event);
 
         /** @var Event\CountryEvent\CreateCountryEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -232,7 +232,7 @@ class InheritanceTest extends AbstractTestCase
         $query->addPredicate('id', '=', $eventId);
         $event = self::$gateway->findOne($query);
 
-        $this->assertSame(Event\CountryEvent\CreateCountryEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\CreateCountryEvent::class, $event);
 
         /** @var Event\CountryEvent\CreateCountryEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -264,7 +264,7 @@ class InheritanceTest extends AbstractTestCase
         $query->addPredicate('country.name', '=', 'France');
         $event = self::$gateway->findOne($query);
 
-        $this->assertSame(Event\CountryEvent\CreateCountryEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\CreateCountryEvent::class, $event);
 
         /** @var Event\CountryEvent\CreateCountryEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -312,7 +312,7 @@ class InheritanceTest extends AbstractTestCase
     {
         $event = self::$eventRepository->load($eventId);
 
-        $this->assertSame(Event\CountryEvent\EditCountryNameEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\EditCountryNameEvent::class, $event);
 
         /** @var Event\CountryEvent\EditCountryNameEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -338,7 +338,7 @@ class InheritanceTest extends AbstractTestCase
     {
         $event = self::$gateway->load($class, ['id' => $eventId]);
 
-        $this->assertSame(Event\CountryEvent\EditCountryNameEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\EditCountryNameEvent::class, $event);
 
         /** @var Event\CountryEvent\EditCountryNameEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -409,7 +409,7 @@ class InheritanceTest extends AbstractTestCase
         $this->assertDebugStatementCount(1);
         $this->assertDebugStatement(0, 'SELECT a.type, a.id, a.time, a.country_code FROM Event AS a WHERE a.id = ?', $eventId);
 
-        $this->assertSame(Event\CountryEvent\EditCountryNameEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\CountryEvent\EditCountryNameEvent::class, $event);
 
         /** @var Event\CountryEvent\EditCountryNameEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -461,7 +461,7 @@ class InheritanceTest extends AbstractTestCase
 
         $event = self::$eventRepository->load($eventId);
 
-        $this->assertSame(Event\UserEvent\CreateUserEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\UserEvent\CreateUserEvent::class, $event);
 
         /** @var Event\UserEvent\CreateUserEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -488,7 +488,7 @@ class InheritanceTest extends AbstractTestCase
 
         $event = self::$gateway->load($class, ['id' => $eventId]);
 
-        $this->assertSame(Event\UserEvent\CreateUserEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\UserEvent\CreateUserEvent::class, $event);
 
         /** @var Event\UserEvent\CreateUserEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -585,7 +585,7 @@ class InheritanceTest extends AbstractTestCase
 
         $event = self::$eventRepository->load($eventId);
 
-        $this->assertSame(Event\UserEvent\EditUserNameEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\UserEvent\EditUserNameEvent::class, $event);
 
         /** @var Event\UserEvent\EditUserNameEvent $event */
         $this->assertSame($eventId, $event->getId());
@@ -613,7 +613,7 @@ class InheritanceTest extends AbstractTestCase
 
         $event = self::$gateway->load($class, ['id' => $eventId]);
 
-        $this->assertSame(Event\UserEvent\EditUserNameEvent::class, get_class($event));
+        $this->assertInstanceOf(Event\UserEvent\EditUserNameEvent::class, $event);
 
         /** @var Event\UserEvent\EditUserNameEvent $event */
         $this->assertSame($eventId, $event->getId());

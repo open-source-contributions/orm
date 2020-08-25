@@ -33,7 +33,7 @@ class ObjectFactoryTest extends TestCase
         $objectFactory = new ObjectFactory();
         $user = $objectFactory->instantiate($testClassMetadata);
 
-        $this->assertSame(User::class, get_class($user));
+        $this->assertInstanceOf(User::class, $user);
 
         $this->assertSame([
             "\0*\0billingAddress" => null,
@@ -61,7 +61,7 @@ class ObjectFactoryTest extends TestCase
         $objectFactory = new ObjectFactory();
         $user = $objectFactory->instantiate($testClassMetadata);
 
-        $this->assertSame(User::class, get_class($user));
+        $this->assertInstanceOf(User::class, $user);
 
         $this->assertSame([
             "\0*\0transient" => []
@@ -86,7 +86,7 @@ class ObjectFactoryTest extends TestCase
         $user = $objectFactory->instantiate($testClassMetadata);
         $objectFactory->write($user, $values);
 
-        $this->assertSame(User::class, get_class($user));
+        $this->assertInstanceOf(User::class, $user);
 
         $this->assertSame([
             "\0*\0name" => 'John',
